@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vYs4GAUpXhZhEjgGfvfoHlAp1MYiPe+nXEkKzFkpDeE=",
+  "Hash": "XgAVBInCN0n5qYMvhJKBF66iRf49rWgKLZDOux2CcWU=",
   "Source": "Eshopping",
   "BasePath": "_content/Eshopping",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/home/hassane/RiderProjects/Eshopping/Eshopping/obj/Debug/net6.0/scopedcss/projectbundle/Eshopping.bundle.scp.css"
+    },
+    {
+      "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/css/ProductIndex.css",
+      "SourceId": "Eshopping",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/",
+      "BasePath": "_content/Eshopping",
+      "RelativePath": "css/ProductIndex.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/ProductIndex.css"
     },
     {
       "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/css/site.css",

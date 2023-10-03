@@ -1,6 +1,12 @@
 @page
 @model Eshopping.Pages.ProductMaster.IndexModel
-
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="~/css/ProductIndex.css" />
+    <script src="https://kit.fontawesome.com/122dc9e5c9.js" crossorigin="anonymous"></script>
+</head>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
@@ -11,51 +17,24 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Quantity)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Product) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+
+<div class="product-grid">
+    @foreach (var item in Model.Product) {
+        <div class="product">
+            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt=@Html.DisplayFor(modelItem => item.Name)>
+            <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+            <p class="price">@Html.DisplayFor(modelItem => item.Price)</p>
+            <p class="description">@Html.DisplayFor(modelItem => item.Description)</p>
+            <div class="buttons">
+                <button class="wishlist"><i class="fa-solid fa-cart-plus"></i></button>
+                <button class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                <button class="buy"><i class="fa-solid fa-check"></i></button>
+            </div>
+            <div class="actions">
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> 
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            </div>
+        </div>
+    }
+</div>
