@@ -22,6 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Pages\ClientModule\" />
       <Folder Include="Pages\ProductMaster\" />
     </ItemGroup>
 

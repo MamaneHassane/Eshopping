@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Eshopping.DAL;
 using Eshopping.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Eshopping.Pages.ProductMaster
 {
@@ -20,13 +21,24 @@ namespace Eshopping.Pages.ProductMaster
         }
 
         public IList<Product> Product { get;set; } = default!;
+        [BindProperty(SupportsGet = true)]
+        public string ? SearchString { get; set; }
+        public SelectList ? SearchedProducts { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ? ProductName { get; set; }
 
         public async Task OnGetAsync()
         {
-            if (_context.Stock != null)
+            var products = from m in _context.Stock
+                select m;
+            if (!string.IsNullOrEmpty(SearchString))
             {
-                Product = await _context.Stock.ToListAsync();
+                products = products.Where(p => p.Name.Contains(SearchString));
             }
+
+            Product = await products.ToListAsync();
+            
+
         }
     }
 }

@@ -6,8 +6,8 @@ namespace Eshopping.Models;
 
 public class Cart
 {
-    [Key] public int cardId;
-    [ForeignKey("Client")]
-    private Client client;
+    [Key] public int cartId { get; set; }
+    [ForeignKey("client")] public int clientId { get; set; }
+    public Client client { get; set; }
     public ICollection<Product> products { get; set; }
 }
