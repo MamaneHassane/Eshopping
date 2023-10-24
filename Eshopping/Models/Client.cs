@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Eshopping.Models;
 
+[Serializable]
 public class Client
 {
     [Key] public int clientId { get; set; }
@@ -10,5 +11,5 @@ public class Client
     [Required] public string email { get; set; }
     [Required] public DateOnly dateOfBirth { get; set; }
     [Required] public string code { get; set; }
-    public Cart cart { get; set; }
+    public Cart? cart { get; set; }
 }

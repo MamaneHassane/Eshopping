@@ -1,0 +1,26 @@
+@page
+@model Eshopping.Pages.ProductMaster.CartPageModel
+
+@{
+    
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/CartStyle.css"></link>
+</head>
+<body>
+<h1>Your shopping Cart</h1>
+<div class="product-grid">
+    @foreach (var product in Model.CartProducts)
+    {
+        <div class="product">
+            <img class="img-class" src="~/@product.ImageUrl" alt="@product.Name">
+            <p class="price">@product.Price <text>Dhs</text></p>
+            <p class="description">@product.Description</p>
+        </div>
+    }
+</div>
+</body>
+</html>
+

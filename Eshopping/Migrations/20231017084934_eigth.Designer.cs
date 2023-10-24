@@ -3,6 +3,7 @@ using System;
 using Eshopping.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eshopping.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231017084934_eigth")]
+    partial class eigth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.22");
@@ -136,7 +138,8 @@ namespace Eshopping.Migrations
 
             modelBuilder.Entity("Eshopping.Models.Client", b =>
                 {
-                    b.Navigation("cart");
+                    b.Navigation("cart")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

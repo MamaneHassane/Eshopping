@@ -1,5 +1,6 @@
 @page
 @model Eshopping.Pages.ProductMaster.IndexModel
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,12 +8,13 @@
     <link rel="stylesheet" href="~/css/ProductIndex.css" />
     <script src="https://kit.fontawesome.com/122dc9e5c9.js" crossorigin="anonymous"></script>
 </head>
+<body>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Produits Soin corporel homme</h1>
 <form>
      <p>
             Title: <input type="text" asp-for="SearchString" />
@@ -22,19 +24,30 @@
 
 <p>
     <a asp-page="Create">Create New</a>
+    <div>
+        <p>
+            <a asp-page="CartPage">View Cart</a>
+        </p>
+    </div>
 </p>
+
+
+
+
 
 <div class="product-grid">
     @foreach (var item in Model.Product) {
         <div class="product">
-            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt=@Html.DisplayFor(modelItem => item.Name)>
-            <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
-            <p class="price">@Html.DisplayFor(modelItem => item.Price)</p>
+            <img class="img-class" src="~/@item.ImageUrl" alt=@Html.DisplayFor(modelItem => item.Name)>
+            <p class="price">@Html.DisplayFor(modelItem => item.Price) <text>Dhs</text></p> 
             <p class="description">@Html.DisplayFor(modelItem => item.Description)</p>
+            <br/>
             <div class="buttons">
-                <button class="wishlist"><i class="fa-solid fa-cart-plus"></i></button>
-                <button class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                <button class="buy"><i class="fa-solid fa-check"></i></button>
+                <form method="post" asp-page-handler="AddToCart" asp-route-productId="@item.Id">
+                                <button type="submit" class="cart" asp-route-id="@item.Id"><i class="fa-solid fa-cart-plus"></i></button>
+                            </form>
+                <button class="wishlist"><i class="fa-solid fa-cart-shopping "></i></button>
+                <button class="buy" id="@item.Id"><i class="fa-solid fa-check"></i></button>
             </div>
             <div class="actions">
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
@@ -44,3 +57,7 @@
         </div>
     }
 </div>
+
+
+</body>
+</html>

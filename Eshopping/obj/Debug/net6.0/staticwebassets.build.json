@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XgAVBInCN0n5qYMvhJKBF66iRf49rWgKLZDOux2CcWU=",
+  "Hash": "plfq4V1qnubMhMNlAtEFBq6+iPp7g0IrJGbycQRDKh0=",
   "Source": "Eshopping",
   "BasePath": "_content/Eshopping",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "/home/hassane/RiderProjects/Eshopping/Eshopping/obj/Debug/net6.0/scopedcss/projectbundle/Eshopping.bundle.scp.css"
     },
     {
+      "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/css/CartStyle.css",
+      "SourceId": "Eshopping",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/",
+      "BasePath": "_content/Eshopping",
+      "RelativePath": "css/CartStyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/CartStyle.css"
+    },
+    {
       "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/css/ProductIndex.css",
       "SourceId": "Eshopping",
       "SourceType": "Discovered",
@@ -85,6 +102,23 @@
       "OriginalItemSpec": "wwwroot/css/site.css"
     },
     {
+      "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/deo.jpeg",
+      "SourceId": "Eshopping",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/",
+      "BasePath": "_content/Eshopping",
+      "RelativePath": "deo.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/deo.jpeg"
+    },
+    {
       "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/favicon.ico",
       "SourceId": "Eshopping",
       "SourceType": "Discovered",
@@ -100,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/headandshoulders.jpeg",
+      "SourceId": "Eshopping",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/",
+      "BasePath": "_content/Eshopping",
+      "RelativePath": "headandshoulders.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/headandshoulders.jpeg"
     },
     {
       "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/js/site.js",
@@ -1086,6 +1137,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/sanitol.png",
+      "SourceId": "Eshopping",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/",
+      "BasePath": "_content/Eshopping",
+      "RelativePath": "sanitol.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/sanitol.png"
+    },
+    {
+      "Identity": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/soap.jpg",
+      "SourceId": "Eshopping",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/hassane/RiderProjects/Eshopping/Eshopping/wwwroot/",
+      "BasePath": "_content/Eshopping",
+      "RelativePath": "soap.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/soap.jpg"
     }
   ]
 }

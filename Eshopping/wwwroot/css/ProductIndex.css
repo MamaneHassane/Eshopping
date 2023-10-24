@@ -34,7 +34,7 @@ body, html {
 
 .buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .wishlist, .cart , .buy{
@@ -67,4 +67,10 @@ body, html {
 
 .actions a:hover {
     background-color: #0056b3;
+}
+
+.img-class{
+    object-fit: fill;
+    height: 250px;
+    width: 200px;
 }

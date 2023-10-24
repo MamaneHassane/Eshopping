@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Eshopping.DAL;
 using Eshopping.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Eshopping.Pages.ProductMaster
 {
@@ -20,25 +19,45 @@ namespace Eshopping.Pages.ProductMaster
             _context = context;
         }
 
-        public IList<Product> Product { get;set; } = default!;
+        public IList<Product> Product { get;set; }
+        public List<int> CartProductIds { get; set; } = new List<int>();
+
         [BindProperty(SupportsGet = true)]
-        public string ? SearchString { get; set; }
-        public SelectList ? SearchedProducts { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public string ? ProductName { get; set; }
+        public string? SearchString { get; set; }
 
         public async Task OnGetAsync()
         {
             var products = from m in _context.Stock
                 select m;
+
             if (!string.IsNullOrEmpty(SearchString))
             {
                 products = products.Where(p => p.Name.Contains(SearchString));
             }
 
             Product = await products.ToListAsync();
-            
-
         }
+
+        public IActionResult OnPostAddToCart(int productId)
+        {
+            if (CartProductIds == null)
+            {
+                CartProductIds = new List<int>();
+            }
+            CartProductIds.Add(productId);
+            return RedirectToPage("/ProductMaster/CartPage", new { theProductId = productId });
+        }
+        public void OnGetCartPage()
+        {
+            var cartProducts = GetProductsFromDatabase(CartProductIds);
+            ViewData["CartProducts"] = cartProducts;
+        }
+
+        private List<Product> GetProductsFromDatabase(List<int> productIds)
+        {
+            var cartProducts = _context.Stock.Where(p => productIds.Contains(p.Id)).ToList();
+            return cartProducts;
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Eshopping.Models;
 using System.ComponentModel.DataAnnotations;
 
+[Serializable]
 public class Product
 {
     [Key] public int Id { get; set; }
@@ -16,6 +17,6 @@ public class Product
     [Required]
     public int Quantity { get; set; }
 
-    public ICollection<Cart> carts { get; set; }
+    public ICollection<Cart>? carts { get; set; }
     
 }

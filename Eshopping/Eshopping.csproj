@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.22" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.22">
         <PrivateAssets>all</PrivateAssets>
@@ -22,8 +23,19 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages\ClientModule\" />
-      <Folder Include="Pages\ProductMaster\" />
+      <Folder Include="images\" />
+      <Folder Include="Pages\assets\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Pages\Shared\soap.jpg" />
+      <None Remove="Pages\Shared\deo.jpeg" />
+      <Resource Include="wwwroot\deo.jpeg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="wwwroot\soap.jpg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
 </Project>
