@@ -26,7 +26,9 @@
     <a asp-page="Create">Create New</a>
     <div>
         <p>
-            <a asp-page="CartPage">View Cart</a>
+            <form method="post" asp-page-handler="RedirectToCart">
+                                            <button type="submit" class="btn btn-primary">View Cart</button>
+                                        </form>
         </p>
     </div>
 </p>
@@ -44,7 +46,7 @@
             <br/>
             <div class="buttons">
                 <form method="post" asp-page-handler="AddToCart" asp-route-productId="@item.Id">
-                                <button type="submit" class="cart" asp-route-id="@item.Id"><i class="fa-solid fa-cart-plus"></i></button>
+                                <button type="submit" class="cart"><i class="fa-solid fa-cart-plus"></i></button>
                             </form>
                 <button class="wishlist"><i class="fa-solid fa-cart-shopping "></i></button>
                 <button class="buy" id="@item.Id"><i class="fa-solid fa-check"></i></button>

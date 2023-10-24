@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Eshopping.DAL;
 using Eshopping.Models;
+using Humanizer;
 
 namespace Eshopping.Pages.ProductMaster
 {
@@ -20,44 +21,54 @@ namespace Eshopping.Pages.ProductMaster
         }
 
         public IList<Product> Product { get;set; }
-        public List<int> CartProductIds { get; set; } = new List<int>();
-
+        public Cart Cart { get; set; } = new Cart();
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
 
         public async Task OnGetAsync()
         {
-            var products = from m in _context.Stock
-                select m;
-
-            if (!string.IsNullOrEmpty(SearchString))
+            if (Product == null)
             {
-                products = products.Where(p => p.Name.Contains(SearchString));
+                var products = from m in _context.Stock
+                    select m;
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    products = products.Where(p => p.Name.Contains(SearchString));
+                }
+
+                Product = await products.ToListAsync();
             }
-
-            Product = await products.ToListAsync();
         }
-
+        
         public IActionResult OnPostAddToCart(int productId)
         {
-            if (CartProductIds == null)
+            if (Cart == null)
             {
-                CartProductIds = new List<int>();
+                Cart = new Cart();
             }
-            CartProductIds.Add(productId);
-            return RedirectToPage("/ProductMaster/CartPage", new { theProductId = productId });
-        }
-        public void OnGetCartPage()
-        {
-            var cartProducts = GetProductsFromDatabase(CartProductIds);
-            ViewData["CartProducts"] = cartProducts;
+            Cart.AddProductById(productId);
+            var existingCart = _context.Carts.OrderByDescending(c => c.CartId).FirstOrDefault();
+            if (existingCart != null)
+            {
+               existingCart.AddProductById(productId);
+                _context.Carts.Update(existingCart);
+            }
+            else
+            {
+                _context.Carts.Add(Cart);
+            }
+            _context.SaveChanges();
+            return RedirectToPage("Index");
         }
 
-        private List<Product> GetProductsFromDatabase(List<int> productIds)
+        public async Task<IActionResult> OnPostRedirectToCart()
         {
-            var cartProducts = _context.Stock.Where(p => productIds.Contains(p.Id)).ToList();
-            return cartProducts;
+           
+            var existingCart = _context.Carts.OrderByDescending(c => c.CartId).FirstOrDefault();
+            _context.Carts.Update(existingCart);
+            await _context.SaveChangesAsync();
+            return RedirectToPage("CartPage", new { CartIdSend = existingCart.CartId });
         }
-
     }
 }

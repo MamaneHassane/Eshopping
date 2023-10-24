@@ -3,6 +3,7 @@ using System;
 using Eshopping.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,29 +11,32 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eshopping.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231024131954_nine")]
+    partial class nine
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.22");
 
             modelBuilder.Entity("Eshopping.Models.Cart", b =>
                 {
-                    b.Property<int>("CartId")
+                    b.Property<int>("cartId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("CartProductIds")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<int?>("ProductId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("CartId");
+                    b.Property<int?>("clientId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("cartId");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("clientId")
+                        .IsUnique();
 
                     b.ToTable("Carts");
                 });
@@ -41,9 +45,6 @@ namespace Eshopping.Migrations
                 {
                     b.Property<int>("clientId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("CartId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("code")
@@ -66,8 +67,6 @@ namespace Eshopping.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("clientId");
-
-                    b.HasIndex("CartId");
 
                     b.ToTable("Clients");
                 });
@@ -106,14 +105,16 @@ namespace Eshopping.Migrations
                     b.HasOne("Eshopping.Models.Product", null)
                         .WithMany("carts")
                         .HasForeignKey("ProductId");
+
+                    b.HasOne("Eshopping.Models.Client", "client")
+                        .WithOne("cart")
+                        .HasForeignKey("Eshopping.Models.Cart", "clientId");
+
+                    b.Navigation("client");
                 });
 
             modelBuilder.Entity("Eshopping.Models.Client", b =>
                 {
-                    b.HasOne("Eshopping.Models.Cart", "cart")
-                        .WithMany()
-                        .HasForeignKey("CartId");
-
                     b.Navigation("cart");
                 });
 

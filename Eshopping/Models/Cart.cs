@@ -1,20 +1,29 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-
-namespace Eshopping.Models;
-
-[Serializable]
-public class Cart
+namespace Eshopping.Models
 {
-    [Key] public int cartId { get; set; }
-    [ForeignKey("client")] public int? clientId { get; set; }
-    public Client? client { get; set; }
-    public List<Product>? Products { get; set; } = new List<Product>();
-
-    public void AddProduct(Product p)
+    public class Cart
     {
-        Products ??= new List<Product>();
-        Products.Add(p);
+        [Key]
+        public int CartId { get; set; }
+        
+        // Autres propriétés de Cart
+
+        public string CartProductIds { get; set; }  // Utilisé pour stocker la liste des ID de produits sous forme de chaîne JSON
+
+        // Méthode pour ajouter un produit au panier
+        public void AddProductById(int productId)
+        {
+            if (CartProductIds == null)
+            {
+                CartProductIds = "[]";  // Initialisez la chaîne JSON vide
+            }
+
+            var productIds = Newtonsoft.Json.JsonConvert.DeserializeObject<List<int>>(CartProductIds);
+            productIds.Add(productId);
+            CartProductIds = Newtonsoft.Json.JsonConvert.SerializeObject(productIds);
+        }
     }
 }
