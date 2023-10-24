@@ -41,5 +41,16 @@ namespace Eshopping.Pages.ProductMaster
             var cartProducts = _context.Stock.Where(p => productIds.Contains(p.Id)).ToList();
             return cartProducts;
         }
+        
+        public IActionResult OnPostClearCart()
+        {
+            if (theCart != null)
+            {
+                theCart.ClearCart();
+                _context.Carts.Update(theCart);
+                _context.SaveChanges();
+            }
+            return RedirectToPage();
+        }
     }
 }

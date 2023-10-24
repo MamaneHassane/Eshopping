@@ -9,21 +9,22 @@ namespace Eshopping.Models
         [Key]
         public int CartId { get; set; }
         
-        // Autres propriétés de Cart
+        public string CartProductIds { get; set; }  
 
-        public string CartProductIds { get; set; }  // Utilisé pour stocker la liste des ID de produits sous forme de chaîne JSON
-
-        // Méthode pour ajouter un produit au panier
         public void AddProductById(int productId)
         {
             if (CartProductIds == null)
             {
-                CartProductIds = "[]";  // Initialisez la chaîne JSON vide
+                CartProductIds = "[]";  
             }
 
             var productIds = Newtonsoft.Json.JsonConvert.DeserializeObject<List<int>>(CartProductIds);
             productIds.Add(productId);
             CartProductIds = Newtonsoft.Json.JsonConvert.SerializeObject(productIds);
+        }
+        public void ClearCart()
+        {
+            CartProductIds = "[]";
         }
     }
 }
